@@ -1,17 +1,16 @@
 import React from "react";
-import {DatePipe} from "../util/global"
+import { DatePipe } from "../util/global";
 class ManualAttendance extends React.Component {
-  constructor(props){
-    super(props)
-    this.state={
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
   render() {
     return (
       <div>
-        <table align="center" rowSpan="20px" padding="13px" border="1px">
-          <tbody>            
-          <tr>
+        <table className="table">
+          <thead>
+            <tr>
               <th>E-ID</th>
               <th>Name</th>
               <th>RFID NO</th>
@@ -19,6 +18,8 @@ class ManualAttendance extends React.Component {
               <th>TIME</th>
               <th>Date</th>
             </tr>
+          </thead>
+          <tbody>
             {this.props.data.map((data1) => (
               <tr>
                 <td>{data1.user__id}</td>
