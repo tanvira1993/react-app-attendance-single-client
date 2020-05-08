@@ -14,12 +14,27 @@ export const getManualAttendance = async () => {
   }
 };
 
+
+export const storeManualAttendance = async (data) => {
+  const url = Base_url + `manualAttendance/${param}`;
+  try {
+    const response = await axios.post(url, {
+      device_location_id: 1,
+      date: data
+    });
+    console.log(response)
+    return response.data.result;
+  } catch (error) {
+    return null
+  }
+};
+
 export const getDailyAttendance = async(id,datestring)=>{
   const url = Base_url + `dateReport`;
 
   try {
     const response = await axios.post(url, {
-      device_location_id: id,
+      device_location_id: 1,
       date: datestring
     });
     console.log(response)
@@ -36,7 +51,7 @@ export const getmonthlyAttendance = async(id,month)=>{
 
   try {
     const response = await axios.post(url, {
-      device_location_id: id,
+      device_location_id: 1,
       month: month
     });
     console.log(response)
@@ -52,7 +67,7 @@ export const getWeeklyyAttendance = async(id)=>{
 
   try {
     const response = await axios.post(url, {
-      device_location_id: id
+      device_location_id: 1
     });
     console.log(response)
     return response.data.result;
@@ -66,7 +81,7 @@ export const getSelectedAttendance = async(id,start,end)=>{
 
   try {
     const response = await axios.post(url, {
-      device_location_id: id,
+      device_location_id: 1,
       start: start,
       end: end
     });
@@ -76,3 +91,41 @@ export const getSelectedAttendance = async(id,start,end)=>{
     return null
   }
 }
+
+
+
+///post api for manual atteendance 
+
+
+// [
+//   {
+//   "rfid_number" : "123",
+//   "rfid_users_id": 15,
+//   "user_type_id": 15,
+//   "organization_id": 15,
+//   "branch_id": 15,
+//   "devices_id": 15,
+//   "device_location_id": 15,
+//   "in_time": "21:21:21",
+//   "month_name": "january",
+//   "created_at":"2020-04-29",
+//   "comment":"polaise"
+  
+// },
+// {
+//   "rfid_number" : "123",
+//   "rfid_users_id": 15,
+//   "user_type_id": 15,
+//   "organization_id": 15,
+//   "branch_id": 15,
+//   "devices_id": 15,
+//   "device_location_id": 15,
+//   "in_time": "21:21:21",
+//   "month_name": "january",
+//   "created_at":"2020-04-29",
+//   "comment":"polaise"
+  
+// }
+
+
+// ]
