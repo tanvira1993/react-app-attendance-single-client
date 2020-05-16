@@ -1,9 +1,9 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import { getmonthlyAttendance } from "../api/attendanceApi";
 import ManualAttedance from "../components/manualAttendance.component";
-import Month from "../components/month.component";
+import MonthPicker from "../components/monthPicker.component";
 import moment from "moment";
+
 class Monthly extends React.Component {
   constructor(props) {
     super(props);
@@ -14,17 +14,21 @@ class Monthly extends React.Component {
     };
   }
 
-  postreq = async () => {
+  postreq = async (date) => {
     this.state.rendering = 1;
-    const data = await getmonthlyAttendance(1, "May2020");
+    const data = await getmonthlyAttendance(1, date);
     this.setState({ report: data });
     return null;
+  };
+  handleShow = (date) => {
+    let momentDate = moment(date.toDateString()).format("MMMYYYY");
+    this.postreq(momentDate);
   };
   render() {
     const design = <ManualAttedance data={this.state.report} />;
     return (
       <div>
-        <Month />
+        <MonthPicker handleShow={this.handleShow} />
         {this.state.rendering === 0 ? null : design}
       </div>
     );
