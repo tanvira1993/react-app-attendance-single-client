@@ -46,8 +46,8 @@ const Month = () => {
   const handleClick = (date) => {
     console.log(typeof date);
     // const parse = date.split(" ");
-    console.log(date);
-    //handleDateChange(date);
+    // console.log(parse);
+    // handleDateChange(date);
   };
   return (
     <div style={{ width: "100%" }}>
@@ -87,11 +87,10 @@ const Month = () => {
               <span></span>
             </Box>
             <Box component="span" className="ml-4 mt-2" p={1}>
-              <Button variant="contained">Show</Button>
+              <Button variant="contained">Default</Button>
             </Box>
           </Box>
         </CardContent>
-
         <CardContent>
           <table className="table table-bordered">
             <thead className="table-dark">
