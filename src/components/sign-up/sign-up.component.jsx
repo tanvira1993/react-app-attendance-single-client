@@ -21,10 +21,13 @@ class SignUp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      displayName: null,
+      email: null,
+      password: null,
+      confirmPassword: null,
+      errors: {
+        email: "",
+      },
     });
   };
 
