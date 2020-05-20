@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   menuItemIcon: {
-    color: "#97c05c",
+    color: "#607D8B",
   },
   root: {
     display: "flex",
