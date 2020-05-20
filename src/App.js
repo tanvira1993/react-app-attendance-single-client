@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Dashboard from "./components/drawer.component";
-import Login from "./components/sign-in/sign-in.component"
-
+import Login from "./components/sign-in/sign-in"
+import {tokenValidate} from "./util/config"
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,14 +12,16 @@ class App extends Component {
     };
   }
   async componentDidMount(){
-    const token = await localStorage.getItem('token');
-    console.log("gggg==>",token)
+    // const token = await tokenValidate();
+    //const token = token.data
+    const token = localStorage.getItem('token');
     this.setState({flag : token})
+    console.log(token)
   }
   render(){
   return (
     <div>
-      {this.state.flag !==null ?<Dashboard></Dashboard>:<Login/>}
+      {this.state.flag !== null ?<Dashboard></Dashboard>:<Login/>}      
     </div>
   );
 }

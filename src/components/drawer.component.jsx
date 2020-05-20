@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -147,7 +147,10 @@ export default function PersistentDrawerLeft() {
             <Typography variant="h6" className={classes.title}>
               Attendance Management
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button color="inherit" onClick={()=>{
+              localStorage.clear();
+              window.location.reload(false);
+            }}>Logout</Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -172,7 +175,8 @@ export default function PersistentDrawerLeft() {
           <Divider />
 
           <List component="nav" className={classes.appMenu} disablePadding>
-            <ListItem button className={classes.menuItem}>
+            <ListItem button component={Link}
+              to="/" className={classes.menuItem}>
               <ListItemIcon className={classes.menuItemIcon}>
                 <IconDashboard />
               </ListItemIcon>

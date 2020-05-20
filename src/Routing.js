@@ -1,6 +1,6 @@
 import React from "react";
 import Manual from "./pages/manualAttendance";
-import { Route } from "react-router-dom";
+import { Route,Switch } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import Weekly from "./pages/weeklyAttendance";
 import Monthly from "./pages/monthlyAttendance";
@@ -11,6 +11,7 @@ import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
 const AppRoute = () => {
   return (
     <div>
+      <Switch>
       <Route exact path="/" component={Homepage}></Route>
       <Route path="/manualattendance" component={Manual}></Route>
       <Route path="/dailyattendance" component={Daily}></Route>
@@ -18,6 +19,7 @@ const AppRoute = () => {
       <Route path="/monthattendance" component={Monthly}></Route>
       <Route path="/selectedattendance" component={SelectedAttendance}></Route>
       <Route path="/signin" component={SignInAndSignUp}></Route>
+      </Switch>
     </div>
   );
 };

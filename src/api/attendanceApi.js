@@ -1,13 +1,15 @@
 import axios from "axios";
 import { Base_url } from "../util/global";
+import {headerConfig} from "../util/config"
 
 const param = 1;
 
 
 export const getManualAttendance = async () => {
   const url = Base_url + `manualAttendance/${param}`;
+  console.log(headerConfig())
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, headerConfig());
     return response.data.result;
   } catch (error) {
     return null
