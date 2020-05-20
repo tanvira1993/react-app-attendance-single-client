@@ -27,8 +27,6 @@ import Routing from "../Routing";
 import { BrowserRouter, Link } from "react-router-dom";
 import StickyFooter from "../components/footer.component";
 
-import FlexDirection from "./month.component";
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -108,6 +106,7 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -118,6 +117,10 @@ export default function PersistentDrawerLeft() {
 
   function handleClick() {
     setOpen1(!open1);
+  }
+
+  function handleSettingClick() {
+    setOpen2(!open2);
   }
 
   return (
@@ -157,7 +160,7 @@ export default function PersistentDrawerLeft() {
           }}
         >
           <div className={classes.drawerHeader}>
-            <h2>Admin Panel</h2>
+            <h5>Admin Panel</h5>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "ltr" ? (
                 <ChevronLeftIcon />
@@ -190,12 +193,7 @@ export default function PersistentDrawerLeft() {
                 primary="Manual Attendance"
               />
             </ListItem>
-            <ListItem button className={classes.menuItem}>
-              <ListItemIcon className={classes.menuItemIcon}>
-                <IconDashboard />
-              </ListItemIcon>
-              <ListItemText primary="Take Manual Attendance" />
-            </ListItem>
+            
             <ListItem button onClick={handleClick} className={classes.menuItem}>
               <ListItemIcon className={classes.menuItemIcon}>
                 <IconLibraryBooks />
@@ -212,7 +210,10 @@ export default function PersistentDrawerLeft() {
                   to="/dailyattendance"
                   className={classes.menuItem}
                 >
-                  <ListItemText inset primary="Daily Attendance" />
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Daily Report" />
                 </ListItem>
 
                 <ListItem
@@ -221,7 +222,10 @@ export default function PersistentDrawerLeft() {
                   to="/weekattendance"
                   className={classes.menuItem}
                 >
-                  <ListItemText inset primary="Weekly Attendance" />
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Weekly Report" />
                 </ListItem>
                 <ListItem
                   button
@@ -229,7 +233,57 @@ export default function PersistentDrawerLeft() {
                   to="/monthattendance"
                   className={classes.menuItem}
                 >
-                  <ListItemText inset primary="Monthly Attendance" />
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Monthly Report" />
+                </ListItem>
+              </List>
+            </Collapse>
+
+            <ListItem button onClick={handleSettingClick} className={classes.menuItem}>
+              <ListItemIcon className={classes.menuItemIcon}>
+                <IconLibraryBooks />
+              </ListItemIcon>
+              <ListItemText primary="Seetings" />
+              {open2 ? <IconExpandLess /> : <IconExpandMore />}
+            </ListItem>
+            <Collapse in={open2} timeout="auto" unmountOnExit>
+              <Divider />
+              <List component="div" disablePadding>
+                <ListItem
+                  button
+                  component={Link}
+                  to="/dailyattendance"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="RFID-Users" />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Link}
+                  to="/weekattendance"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Time-Limit" />
+                </ListItem>
+                <ListItem
+                  button
+                  component={Link}
+                  to="/monthattendance"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                <IconBarChart />
+              </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Admin-users" />
                 </ListItem>
               </List>
             </Collapse>
