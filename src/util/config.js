@@ -26,9 +26,7 @@ export const login = async (data) => {
 
 export const tokenValidate = async () => {
   const getToken = await localStorage.getItem("token");
-  console.log("getToken ager blok", getToken);
-  if (getToken == null) {
-    console.log("getToken", getToken);
+  if (getToken === null) {
     return false;
   } else {
     const url = Base_url + `tokenValidate`;
@@ -40,7 +38,6 @@ export const tokenValidate = async () => {
     };
     try {
       const response = await axios.post(url, data);
-      console.log("getToken ager blok na kutta", getToken);
       return response;
     } catch (error) {
       return false;

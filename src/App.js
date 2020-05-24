@@ -12,16 +12,21 @@ class App extends Component {
     };
   }
   async componentDidMount(){
-    // const token = await tokenValidate();
-    //const token = token.data
-    const token = localStorage.getItem('token');
-    this.setState({flag : token})
-    console.log(token)
+    const token = await tokenValidate();
+    const tokenParse = token.data
+    if(tokenParse === undefined  ){
+      this.setState({flag : false})
+    }
+    else{
+      this.setState({flag : tokenParse})
+    }
+    console.log("token from backend",tokenParse)
+    console.log("flag==>",this.state.flag)
   }
   render(){
   return (
     <div>
-      {this.state.flag !== null ?<Dashboard></Dashboard>:<Login/>}      
+      {this.state.flag === true ?<Dashboard></Dashboard>:this.state.flag === false?<Login/>:null}      
     </div>
   );
 }
