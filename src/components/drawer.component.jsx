@@ -26,7 +26,7 @@ import Collapse from "@material-ui/core/Collapse";
 import Routing from "../Routing";
 import { BrowserRouter, Link } from "react-router-dom";
 import StickyFooter from "../components/footer.component";
-import {headerConfig} from "../util/config";
+import { headerConfig } from "../util/config";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -129,78 +129,87 @@ export default function PersistentDrawerLeft() {
 
   const config = (
     <>
-    <ListItem button onClick={handleConfigurationClick} className={classes.menuItem}>
-              <ListItemIcon className={classes.menuItemIcon}>
-                <IconLibraryBooks />
-              </ListItemIcon>
-              <ListItemText primary="Configurations" />
-              {open3 ? <IconExpandLess /> : <IconExpandMore />}
-            </ListItem>
-            <Collapse in={open3} timeout="auto" unmountOnExit>
-              <Divider />
-              <List component="div" disablePadding>
-                <ListItem
-                  button
-                  component={Link}
-                  to="/dailyattendance"
-                  className={classes.menuItem}
-                >
-                  <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Organization" />
-                </ListItem>
+      <ListItem
+        button
+        onClick={handleConfigurationClick}
+        className={classes.menuItem}
+      >
+        <ListItemIcon className={classes.menuItemIcon}>
+          <IconLibraryBooks />
+        </ListItemIcon>
+        <ListItemText primary="Configurations" />
+        {open3 ? <IconExpandLess /> : <IconExpandMore />}
+      </ListItem>
+      <Collapse in={open3} timeout="auto" unmountOnExit>
+        <Divider />
+        <List component="div" disablePadding>
+          <ListItem
+            button
+            component={Link}
+            to="/Organization"
+            className={classes.menuItem}
+          >
+            <ListItemIcon className={classes.menuItemIcon}>
+              <IconBarChart />
+            </ListItemIcon>
+            <ListItemText
+              className="font-weight-light"
+              primary="Organization"
+            />
+          </ListItem>
 
-                <ListItem
-                  button
-                  component={Link}
-                  to="/weekattendance"
-                  className={classes.menuItem}
-                >
-                  <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Branch" />
-                </ListItem>
-                <ListItem
-                  button
-                  component={Link}
-                  to="/monthattendance"
-                  className={classes.menuItem}
-                >
-                  <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Device Location" />
-                </ListItem>
+          <ListItem
+            button
+            component={Link}
+            to="/weekattendance"
+            className={classes.menuItem}
+          >
+            <ListItemIcon className={classes.menuItemIcon}>
+              <IconBarChart />
+            </ListItemIcon>
+            <ListItemText className="font-weight-light" primary="Branch" />
+          </ListItem>
+          <ListItem
+            button
+            component={Link}
+            to="/monthattendance"
+            className={classes.menuItem}
+          >
+            <ListItemIcon className={classes.menuItemIcon}>
+              <IconBarChart />
+            </ListItemIcon>
+            <ListItemText
+              className="font-weight-light"
+              primary="Device Location"
+            />
+          </ListItem>
 
-                <ListItem
-                  button
-                  component={Link}
-                  to="/monthattendance"
-                  className={classes.menuItem}
-                >
-                  <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Device Map" />
-                </ListItem>
-                <ListItem
-                  button
-                  component={Link}
-                  to="/monthattendance"
-                  className={classes.menuItem}
-                >
-                  <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="User Type" />
-                </ListItem>
-              </List>
-            </Collapse>
-            </>
-  )
-
+          <ListItem
+            button
+            component={Link}
+            to="/monthattendance"
+            className={classes.menuItem}
+          >
+            <ListItemIcon className={classes.menuItemIcon}>
+              <IconBarChart />
+            </ListItemIcon>
+            <ListItemText className="font-weight-light" primary="Device Map" />
+          </ListItem>
+          <ListItem
+            button
+            component={Link}
+            to="/monthattendance"
+            className={classes.menuItem}
+          >
+            <ListItemIcon className={classes.menuItemIcon}>
+              <IconBarChart />
+            </ListItemIcon>
+            <ListItemText className="font-weight-light" primary="User Type" />
+          </ListItem>
+        </List>
+      </Collapse>
+    </>
+  );
 
   return (
     <div className={classes.root}>
@@ -226,10 +235,15 @@ export default function PersistentDrawerLeft() {
             <Typography variant="h6" className={classes.title}>
               Attendance Management
             </Typography>
-            <Button color="inherit" onClick={()=>{
-              localStorage.clear();
-              window.location.reload(false);
-            }}>Logout</Button>
+            <Button
+              color="inherit"
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload(false);
+              }}
+            >
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -254,8 +268,12 @@ export default function PersistentDrawerLeft() {
           <Divider />
 
           <List component="nav" className={classes.appMenu} disablePadding>
-            <ListItem button component={Link}
-              to="/" className={classes.menuItem}>
+            <ListItem
+              button
+              component={Link}
+              to="/"
+              className={classes.menuItem}
+            >
               <ListItemIcon className={classes.menuItemIcon}>
                 <IconDashboard />
               </ListItemIcon>
@@ -276,7 +294,7 @@ export default function PersistentDrawerLeft() {
                 primary="Manual Attendance"
               />
             </ListItem>
-            
+
             <ListItem button onClick={handleClick} className={classes.menuItem}>
               <ListItemIcon className={classes.menuItemIcon}>
                 <IconLibraryBooks />
@@ -294,9 +312,12 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Daily Report" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Daily Report"
+                  />
                 </ListItem>
 
                 <ListItem
@@ -306,9 +327,12 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Weekly Report" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Weekly Report"
+                  />
                 </ListItem>
                 <ListItem
                   button
@@ -317,14 +341,21 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Monthly Report" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Monthly Report"
+                  />
                 </ListItem>
               </List>
             </Collapse>
 
-            <ListItem button onClick={handleSettingClick} className={classes.menuItem}>
+            <ListItem
+              button
+              onClick={handleSettingClick}
+              className={classes.menuItem}
+            >
               <ListItemIcon className={classes.menuItemIcon}>
                 <IconLibraryBooks />
               </ListItemIcon>
@@ -341,9 +372,12 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="RFID-Users" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="RFID-Users"
+                  />
                 </ListItem>
 
                 <ListItem
@@ -353,9 +387,12 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Time-Limit" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Time-Limit"
+                  />
                 </ListItem>
                 <ListItem
                   button
@@ -364,15 +401,17 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                <IconBarChart />
-              </ListItemIcon>
-                  <ListItemText className="font-weight-light" primary="Admin-users" />
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Admin-users"
+                  />
                 </ListItem>
               </List>
             </Collapse>
 
-             {headerConfig().headers.role==='4'?config:null}   
-            
+            {headerConfig().headers.role === "4" ? config : null}
           </List>
         </Drawer>
         <main
