@@ -8,6 +8,7 @@ import Daily from "./pages/dailyAttendance";
 import SelectedAttendance from "./pages/selectedAttendance";
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
 import organization from "./pages/organization";
+import CreateOrg from "./pages/createOrg";
 
 const AppRoute = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoute = () => {
         ></Route>
         <Route path="/signin" component={SignInAndSignUp}></Route>
         <Route path="/organization" component={organization}></Route>
+        <Route path="/createorg" component={CreateOrg}></Route>
       </Switch>
     </div>
   );
