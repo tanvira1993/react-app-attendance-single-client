@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles({
   root: {
@@ -45,7 +44,6 @@ const Month = (props) => {
 
   return (
     <div style={{ width: "100%" }}>
-      <Card className={classes.root} variant="outlined">
         <table className="table table-bordered">
           <thead className="table-dark">
             <tr>
@@ -72,7 +70,6 @@ const Month = (props) => {
             ))}
           </tbody>
         </table>
-      </Card>
     </div>
   );
 };
