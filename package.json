@@ -28,11 +28,13 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-calendar": "^3.0.1",
+    "react-date-range": "^1.0.3",
     "react-dom": "^16.13.1",
     "react-material-ui-form-validator": "^2.0.10",
     "react-month-picker": "^2.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "rsuite": "^4.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
