@@ -348,6 +348,34 @@ export default function PersistentDrawerLeft() {
                     primary="Monthly Report"
                   />
                 </ListItem>
+                <ListItem
+                  button
+                  component={Link}
+                  to="/dateRangeReport"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="Date Report"
+                  />
+                </ListItem>
+                <ListItem
+                  button
+                  component={Link}
+                  to="/userReport"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                    <IconBarChart />
+                  </ListItemIcon>
+                  <ListItemText
+                    className="font-weight-light"
+                    primary="User Report"
+                  />
+                </ListItem>
               </List>
             </Collapse>
 
