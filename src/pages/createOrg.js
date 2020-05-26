@@ -23,30 +23,39 @@ export default class CreateOrg extends Component {
   render() {
     const { organization } = this.state;
     return (
-      <ValidatorForm
-        ref="form"
-        onSubmit={this.handleSubmit}
-        onError={(errors) => console.log(errors)}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
-        <TextValidator
-          label="Organization"
-          onChange={this.handleChange}
-          name="organization"
-          value={organization}
-          validators={["required"]}
-          errorMessages={["this field is required"]}
-        />
+        {" "}
+        <ValidatorForm
+          ref="form"
+          onSubmit={this.handleSubmit}
+          onError={(errors) => console.log(errors)}
+        >
+          <TextValidator
+            label="Organization"
+            onChange={this.handleChange}
+            name="organization"
+            value={organization}
+            validators={["required"]}
+            errorMessages={["this field is required"]}
+          />
+        </ValidatorForm>
         <Button
+          className="ml-3"
           onClick={this.handleSubmit}
           type="submit"
           variant="contained"
           color="primary"
-          size="large"
+          size="small"
           startIcon={<SaveIcon />}
         >
           Submit
         </Button>
-      </ValidatorForm>
+      </div>
     );
   }
 }
