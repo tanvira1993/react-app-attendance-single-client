@@ -61,3 +61,25 @@ export const headerConfig = () => {
   };
   return data;
 };
+
+
+export const parsingServerDate = (mainData) => {
+  let output = [];
+
+  mainData.forEach(function (item) {
+    var existing = output.filter(function (v, i) {
+      return v.rfid_user_name === item.rfid_user_name;
+    });
+    if (existing.length) {
+      var existingIndex = output.indexOf(existing[0]);
+      output[existingIndex].created_at = output[
+        existingIndex
+      ].created_at.concat(item.created_at);
+    } else {
+      if (typeof item.created_at == "string")
+        item.created_at = [item.created_at];
+      output.push(item);
+    }
+  });
+  return output
+}
