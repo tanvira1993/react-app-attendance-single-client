@@ -1,6 +1,7 @@
 import React from "react";
 import ManualAttedance from "../components/manualAttendance.component";
 import { getManualAttendance } from "../api/attendanceApi";
+import ManualAttendencePost from "../components/manualAttendencePost.component";
 
 class Manual extends React.Component {
   constructor(props) {
@@ -13,16 +14,15 @@ class Manual extends React.Component {
   async componentDidMount() {
     const getdata = await getManualAttendance();
     this.setState({ data: getdata });
-    console.log("data========",getdata);
+    console.log("data========", getdata);
   }
 
   render() {
-    
     return (
       <>
-     <ManualAttedance data={this.state.data}/>
-    
+        <ManualAttendencePost data={this.state.data} />
       </>
+      //<ManualAttendencePost></Example>
     );
   }
 }
