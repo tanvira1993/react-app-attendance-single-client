@@ -47,6 +47,15 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: "white",
+    fontFamily : 'Segoe UI Symbol',
+  },
+  drawerTitle: {
+    fontSize:21,
+    fontFamily : '-apple-system',
+    margin : 'auto',
+    fontWeight:600,
+
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -256,7 +265,7 @@ export default function PersistentDrawerLeft() {
           }}
         >
           <div className={classes.drawerHeader}>
-            <h5>Admin Panel</h5>
+            <div className={classes.drawerTitle}>Control Panel</div>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "ltr" ? (
                 <ChevronLeftIcon />
