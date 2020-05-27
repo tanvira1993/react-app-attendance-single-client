@@ -10,8 +10,8 @@ import { DateRangePicker } from "react-date-range";
 import { addDays } from "date-fns";
 import { useState } from "react";
 import Box from "@material-ui/core/Box";
-
-function Homepage() {
+import EventCalendar from "./eventcalendar";
+function Homepage(props) {
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -166,6 +166,9 @@ function Homepage() {
           Submit
         </Button>
       </diV>
+      <div>
+        <EventCalendar />
+      </div>
     </React.Fragment>
   );
 }
