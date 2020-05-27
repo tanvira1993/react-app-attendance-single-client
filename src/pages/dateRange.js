@@ -1,5 +1,4 @@
 import React from "react";
-import SaveIcon from "@material-ui/icons/Save";
 import Button from "@material-ui/core/Button";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -9,6 +8,7 @@ import { useState } from "react";
 import Cal from "../components/month.component";
 import { parsingServerDate } from "../util/config";
 import { getSelectedAttendance } from "../api/attendanceApi";
+import SearchIcon from '@material-ui/icons/Search';
 function Homepage() {
   const [state, setState] = useState([
     {
@@ -79,7 +79,7 @@ function Homepage() {
           variant="contained"
           color="primary"
           size="small"
-          startIcon={<SaveIcon />}
+          startIcon={<SearchIcon />}
         >
           Submit
         </Button>

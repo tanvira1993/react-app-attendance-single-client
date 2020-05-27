@@ -39,6 +39,7 @@
     "react-month-picker": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5",
     "rsuite": "^4.7.0"
   },
   "scripts": {

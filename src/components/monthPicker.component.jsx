@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, {  useState } from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import {
-  DateTimePicker,
   DatePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
@@ -9,6 +8,7 @@ import indigo from "@material-ui/core/colors/indigo";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import SearchIcon from '@material-ui/icons/Search';
 const defaultMaterialTheme = createMuiTheme({
   palette: {
     primary: indigo,
@@ -34,12 +34,16 @@ function MonthPicker(props) {
       </ThemeProvider>
 
       <Box className="ml-2" component="span">
+        
         <Button
-          variant="contained"
-          onClick={() => props.handleShow(selectedDate)}
-        >
-          Show
-        </Button>
+        variant="contained"
+        color="primary"
+        size="small"
+        onClick={() => props.handleShow(selectedDate)}        
+        startIcon={<SearchIcon />}
+      >
+      Show
+      </Button>
       </Box>
     </React.Fragment>
   );

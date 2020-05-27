@@ -94,6 +94,30 @@ export const getSelectedAttendance = async(id,start,end)=>{
   }
 }
 
+export const getUserAttendance = async(data)=>{
+  const url = Base_url + `userReport`;
+
+  try {
+    const response = await axios.post(url,data);
+    console.log(response)
+    return response.data.result;
+  } catch (error) {
+    return null
+  }
+}
+
+export const getRfidUsersByDeviceLocation = async(id)=>{
+  const url = Base_url + `getRUsersByDeviceLocation/${id}` ;
+
+  try {
+    const response = await axios.get(url);
+    console.log(response.data)
+    return response.data;
+  } catch (error) {
+    return null
+  }
+}
+
 
 
 ///post api for manual atteendance 

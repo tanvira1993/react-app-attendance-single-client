@@ -4,6 +4,8 @@ import MonthPicker from "../components/monthPicker.component";
 import moment from "moment";
 import {parsingServerDate} from "../util/config";
 import Cal from "../components/month.component";
+import Box from '@material-ui/core/Box';
+
 class Monthly extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +47,8 @@ class Monthly extends React.Component {
     const design = <Cal data={this.state.report} date={this.state.dateInfo}/>;
     return (
       <div>
-        <MonthPicker handleShow={this.handleShow} />
+        <Box display="flex" justifyContent="flex-start"> <MonthPicker handleShow={this.handleShow} /> </Box>
+        
         {this.state.rendering === 0 ? null : design}
       </div>
     );
