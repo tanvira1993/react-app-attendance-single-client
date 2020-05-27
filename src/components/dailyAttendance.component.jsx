@@ -10,7 +10,7 @@ class ManualAttendencePost extends Component {
     this.state = {};
   }
   render() {
-      const inputStyle = {backgroundColor :'#E3E92C'} 
+      const inputStyle = {backgroundColor :'white', color:'black'} 
     return (
       <Table striped bordered hover>
         <thead>
