@@ -14,7 +14,6 @@ export default class EventCalendar extends Component {
   formatEvents(data) {
     let event = [];
     data.map((data) => {
-      console.log("gua gua");
       event.push(
         {
           title: `In-Time: ${TimePipe(DatePipe(data.created_at), data.inTime)}`,
