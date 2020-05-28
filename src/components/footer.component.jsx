@@ -4,12 +4,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "100vh",
+    minHeight: "50vh",
   },
   main: {
     marginTop: theme.spacing(8),
@@ -29,10 +28,10 @@ export default function StickyFooter() {
   const classes = useStyles();
 
   return (
-    <div  className={classes.root}>
+    <div className={classes.root}>
       <CssBaseline />
- 
-      <footer  className={classes.footer}>
+
+      <footer className={classes.footer}>
         <Container maxWidth="sm">
           <Typography variant="body1">
             &copy; {new Date().getFullYear()} MEMES INC | All Rights Reserved |
