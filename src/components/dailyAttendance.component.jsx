@@ -3,14 +3,14 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Table } from "react-bootstrap";
 import { Input } from "antd";
 import "antd/dist/antd.css";
-import { DatePipe } from "../util/global";
+import { DatePipe, TimePipe } from "../util/global";
 class ManualAttendencePost extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
-      const inputStyle = {backgroundColor :'white', color:'black'} 
+    const inputStyle = { backgroundColor: "white", color: "black" };
     return (
       <Table striped bordered hover>
         <thead>
@@ -57,10 +57,20 @@ class ManualAttendencePost extends Component {
               <td>{DatePipe(data1.created_at)}</td>
 
               <td>
-                <Input style={inputStyle} placeholder="in_time" value={data1.inTime} disabled />
+                <Input
+                  style={inputStyle}
+                  placeholder="in_time"
+                  value={TimePipe(DatePipe(data1.created_at), data1.inTime)}
+                  disabled
+                />
               </td>
               <td>
-                <Input style={inputStyle} placeholder="Comments" value={data1.comment} disabled />
+                <Input
+                  style={inputStyle}
+                  placeholder="Comments"
+                  value={data1.comment}
+                  disabled
+                />
               </td>
             </tr>
           ))}
