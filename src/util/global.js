@@ -9,9 +9,28 @@ export const DatePipe = (date) => {
     return null;
   }
   const tempDate = new Date(date).toString().split(" ");
-  console.log(tempDate);
+
   const formattedDate = `${tempDate[2]} ${tempDate[1]} ${tempDate[3]}`;
   return formattedDate;
+};
+
+export const BackDatePipe = (date) => {
+  let start = new Date(date).toLocaleDateString().split("/");
+  const startD = `${start[2]}-${start[0].padStart(2, "0")}-${start[1].padStart(
+    2,
+    "0"
+  )}`;
+
+  return startD;
+};
+
+export const TimePipe = (date, time) => {
+  if (date == null && time == null) {
+    return null;
+  } else {
+    let start = new Date(`${date} ${time}`).toLocaleTimeString();
+    return start;
+  }
 };
 
 export const toastDesign = (data) => {

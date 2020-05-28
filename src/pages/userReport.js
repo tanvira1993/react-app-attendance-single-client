@@ -10,12 +10,17 @@ import { addDays } from "date-fns";
 import { useState } from "react";
 import Box from "@material-ui/core/Box";
 import EventCalendar from "./eventcalendar";
-import {ToastSpace, toastDesign} from "../util/global"
+import { ToastSpace, toastDesign } from "../util/global";
 import {
   getRfidUsersByDeviceLocation,
   getUserAttendance,
 } from "../api/attendanceApi";
-
+import { makeStyles } from "@material-ui/core/styles";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 function Homepage(props) {
   const [state, setState] = useState([
     {
@@ -24,15 +29,31 @@ function Homepage(props) {
       key: "selection",
     },
   ]);
-
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      marginBottom: "10px",
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      flexBasis: "33.33%",
+      flexShrink: 0,
+    },
+    secondaryHeading: {
+      fontSize: theme.typography.pxToRem(15),
+      color: theme.palette.text.secondary,
+    },
+  }));
   const [rfidusers, setrfidusers] = useState([]);
   const [render, setrender] = useState(false);
   const [report, setreport] = useState(null);
   const [dateInfo, setdateInfo] = useState(null);
   const [user, setUser] = useState(null);
-
+  const [expanded, setExpanded] = React.useState("panel1");
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
   const handleSubmit = async () => {
-    if (state != null && user !=null) {
+    if (state != null && user != null) {
       let startDate = new Date(state[0].startDate)
         .toLocaleDateString()
         .split("/");
@@ -56,15 +77,15 @@ function Homepage(props) {
       await parseData(start, end);
       setdateInfo({
         days: diffDays,
-        startDate: end,
+        startDate: start,
+        endDate: end,
       });
       setrender(true);
+      setExpanded(false);
       console.log("de", render);
-    }
-    else{
-      console.log('ok')
-      toastDesign('Validation Warning!!')
-      
+    } else {
+      console.log("ok");
+      toastDesign("Validation Warning!!");
     }
   };
 
@@ -88,56 +109,88 @@ function Homepage(props) {
   useEffect(() => {
     getData();
   }, []);
-
+  const classes = useStyles();
   return (
     <React.Fragment>
-      <ToastSpace/>
-      <div style={{ width: "100%" }}>
-        <Box display="flex" justifyContent="flex-start" m={1} p={1}>
-          <Box p={1}>
-            <Autocomplete
-              onChange={(event, newValue) => {
-                if (newValue == null) {
-                  setUser(null);
-                  return null;
-                } else {
-                  setUser(newValue.id);
-                }
-              }}
-              id="combo-box-demo"
-              options={rfidusers}
-              getOptionLabel={(option) => option.rfid_user_name}
-              style={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField {...params} label="name" variant="outlined" />
-              )}
-            />
-          </Box>
-          <Box p={1}></Box>
-          <DateRangePicker
-            onChange={(item) => setState([item.selection])}
-            showSelectionPreview={true}
-            moveRangeOnFirstSelection={false}
-            months={1}
-            ranges={state}
-            direction="horizontal"
-          ></DateRangePicker>
-        </Box>
-      </div>
-      <diV style={{ marginLeft: "813px", marginTop: "20px" }}>
-        {" "}
-        <Button
-          onClick={handleSubmit}
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<SearchIcon />}
+      <ToastSpace />
+      <div className={classes.root}>
+        <ExpansionPanel
+          expanded={expanded === "panel1"}
+          onChange={handleChange("panel1")}
         >
-          Submit
-        </Button>
-      </diV>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>Filter</Typography>
+            <Typography className={classes.secondaryHeading}>
+              I am an expansion panel
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div>
+              <div>
+                <Box display="flex" justifyContent="flex-start" m={1} p={1}>
+                  <Box p={1}>
+                    <Autocomplete
+                      onChange={(event, newValue) => {
+                        if (newValue == null) {
+                          setUser(null);
+                          return null;
+                        } else {
+                          setUser(newValue.id);
+                        }
+                      }}
+                      id="combo-box-demo"
+                      options={rfidusers}
+                      getOptionLabel={(option) => option.rfid_user_name}
+                      style={{ width: 300 }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="name"
+                          variant="outlined"
+                        />
+                      )}
+                    />
+                  </Box>
+                  <Box p={1}></Box>
+                  <DateRangePicker
+                    onChange={(item) => setState([item.selection])}
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    months={1}
+                    ranges={state}
+                    direction="horizontal"
+                  ></DateRangePicker>
+                </Box>
+              </div>
+              <div style={{ marginLeft: "813px", marginTop: "20px" }}>
+                {" "}
+                <Button
+                  style={{ marginBottom: "10px" }}
+                  onClick={handleSubmit}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  startIcon={<SearchIcon />}
+                >
+                  Submit
+                </Button>
+              </div>
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
       <div>
-        <EventCalendar />
+        {render === true ? (
+          <EventCalendar
+            style={{ margin: "auto" }}
+            data={report}
+            valid={dateInfo}
+          />
+        ) : null}
       </div>
     </React.Fragment>
   );
