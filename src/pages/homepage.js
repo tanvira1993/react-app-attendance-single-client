@@ -2,7 +2,7 @@ import React from "react";
 import MyClock from "../components/clock.component";
 import { Line, Pie, Doughnut } from "react-chartjs-2";
 import Box from "@material-ui/core/Box";
-
+import Cards from "../components/cards.component";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -45,39 +45,14 @@ class Homepage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{ width: "100%" }}>
-          <Box display="flex" justifyContent="flex-start">
-            <Box display="flex" justifyContent="center" width="50%">
-              <diV>
-                <MyClock />
-              </diV>{" "}
-            </Box>
-            <Box className="ml-6">
-              <div>
-                {" "}
-                <Card variant="outlined">
-                  <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
-                      Word of the Day
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                      be
-                    </Typography>
-                    <Typography color="textSecondary">adjective</Typography>
-                    <Typography variant="body2" component="p">
-                      well meaning and kindly.
-                      <br />
-                      {'"a benevolent smile"'}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">Learn More</Button>
-                  </CardActions>
-                </Card>
-              </div>
-            </Box>
-          </Box>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <MyClock />
         </div>
+
+        <Cards />
+
         <div className="mt-4" style={{ width: "100%" }}>
           <Box display="flex" justifyContent="flex-start">
             <Box width="50%">
