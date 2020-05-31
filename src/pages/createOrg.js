@@ -2,16 +2,12 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { createOrg } from "../api/configuration";
+import { Textbox } from "react-inputs-validation";
+import "react-inputs-validation/lib/react-inputs-validation.min.css";
 export default class CreateOrg extends Component {
   state = {
     organization: "",
-  };
-
-  handleChange = (event) => {
-    const organization = event.target.value;
-    this.setState({ organization });
   };
 
   handleSubmit = () => {
@@ -23,39 +19,55 @@ export default class CreateOrg extends Component {
   render() {
     const { organization } = this.state;
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <React.Fragment>
         {" "}
-        <ValidatorForm
-          ref="form"
-          onSubmit={this.handleSubmit}
-          onError={(errors) => console.log(errors)}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          <TextValidator
-            label="Organization"
-            onChange={this.handleChange}
-            name="organization"
+          <Textbox
+            attributesInput={{
+              id: "Organization",
+              name: "Organaization",
+              type: "text",
+              placeholder: "Place your organization here",
+            }}
             value={organization}
-            validators={["required"]}
-            errorMessages={["this field is required"]}
+            onChange={(organization, e) => {
+              this.setState({ organization });
+              console.log(e);
+            }}
+            onBlur={(e) => {
+              console.log(e);
+            }}
+            validationOption={{
+              name: "Organization",
+              check: true,
+              required: true,
+            }}
           />
-        </ValidatorForm>
-        <Button
-          className="ml-3"
-          onClick={this.handleSubmit}
-          type="submit"
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<SaveIcon />}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "10px",
+          }}
         >
-          Submit
-        </Button>
-      </div>
+          <Button
+            onClick={this.handleSubmit}
+            type="submit"
+            variant="contained"
+            color="primary"
+            size="small"
+            startIcon={<SaveIcon />}
+          >
+            Submit
+          </Button>
+        </div>
+      </React.Fragment>
     );
   }
 }
