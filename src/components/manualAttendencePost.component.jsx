@@ -5,14 +5,20 @@ import { Input, Button } from "antd";
 import "antd/dist/antd.css";
 import { DatePipe } from "../util/global";
 import moment from "moment";
+import { getManualAttendance } from "../api/attendanceApi";
 
 class ManualAttendencePost extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      result: props.data,
+      result: [],
     };
+  }
+
+  async componentDidMount() {
+    const getdata = await getManualAttendance();
+    this.setState({ result: getdata });
   }
   handlePost = () => {
     console.log("daataaa", this.props.data);
