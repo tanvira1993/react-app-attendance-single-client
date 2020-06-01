@@ -13,6 +13,8 @@ import branch from "./pages/branch";
 import CreateBranch from "./pages/createBarnch";
 import DateRange from "./pages/dateRange";
 import UserReport from "./pages/userReport";
+import RfidUser from "./pages/rfidUser";
+import RfidUserAdd from "./components/rfidUserForm.component";
 const AppRoute = () => {
   return (
     <div>
@@ -28,9 +30,11 @@ const AppRoute = () => {
         ></Route>
         <Route path="/signin" component={SignInAndSignUp}></Route>
         <Route path="/organization" component={organization}></Route>
+        <Route path="/rfidUser" component={RfidUser}></Route>
         <Route path="/createorg" component={CreateOrg}></Route>
         <Route path="/branch" component={branch}></Route>
         <Route path="/createBranch" component={CreateBranch}></Route>
+        <Route path="/createRfidUser" component={RfidUserAdd}></Route>
         <Route path="/dateRangeReport" component={DateRange}></Route>
         <Route path="/userReport" component={UserReport}></Route>
       </Switch>
