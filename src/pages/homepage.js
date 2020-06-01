@@ -8,41 +8,62 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
-const state2 = {
-  labels: ["January", "February", "March", "April", "May"],
-  datasets: [
-    {
-      label: "Rainfall",
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: "rgba(75,192,192,1)",
-      borderColor: "rgba(0,0,0,1)",
-      borderWidth: 2,
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
-const state = {
-  labels: ["January", "February", "March", "April", "May"],
-  datasets: [
-    {
-      label: "Rainfall",
-      backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
-      hoverBackgroundColor: [
-        "#501800",
-        "#4B5000",
-        "#175000",
-        "#003350",
-        "#35014F",
-      ],
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
-
+import {getpresent, getallUsers,getChartValue} from "../api/dashboardApi"
+import {DateArray} from "../util/global"
 class Homepage extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      users : 0,
+      present : 0,
+      date : null,
+      parseDate:null
+    }
+  }
+  async componentDidMount(){
+    const users = await getallUsers()
+    const present = await getpresent()
+    const date = await getChartValue()
+    let values = Object.values(date)
+    const parseDate = DateArray(5)
+    this.setState ({users: users,present:present, date:values,parseDate : parseDate})
+  }
   render() {
+
+    const state2 = {
+      labels: this.state.parseDate,
+      datasets: [
+        {
+          label: "persons",
+          fill: false,
+          lineTension: 0.5,
+          backgroundColor: "rgba(75,192,192,1)",
+          borderColor: "rgba(0,0,0,1)",
+          borderWidth: 2,
+          data: this.state.date,
+    
+        },
+      ],
+    };
+     const state = {
+      labels: this.state.parseDate,
+      datasets: [
+        {
+          label: "persons",
+          backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
+          hoverBackgroundColor: [
+            "#501800",
+            "#4B5000",
+            "#175000",
+            "#003350",
+            "#35014F",
+          ],
+          data: this.state.date,
+        },
+      ],
+    };
+    
     return (
       <React.Fragment>
         <div
@@ -51,18 +72,18 @@ class Homepage extends React.Component {
           <MyClock />
         </div>
 
-        <Cards />
+        <Cards users={this.state.users} present={this.state.present}/>
 
         <div className="mt-4" style={{ width: "100%" }}>
           <Box display="flex" justifyContent="flex-start">
             <Box width="50%">
-              <diV>
+              <div>
                 <Pie
                   data={state}
                   options={{
                     title: {
                       display: true,
-                      text: "Average Rainfall per month",
+                      text: "Previous Days Present Ratio",
                       fontSize: 20,
                     },
                     legend: {
@@ -71,7 +92,7 @@ class Homepage extends React.Component {
                     },
                   }}
                 />
-              </diV>{" "}
+              </div>{" "}
             </Box>
             <Box width="50%">
               <div className="ml-3">
@@ -80,7 +101,7 @@ class Homepage extends React.Component {
                   options={{
                     title: {
                       display: true,
-                      text: "Average Rainfall per month",
+                      text: "Previous Days Present Ratio",
                       fontSize: 20,
                     },
                     legend: {

@@ -63,3 +63,19 @@ export const ToastSpace = () => {
     </div>
   );
 };
+
+export const DateArray =  (days) => {
+  var aryDates = [];
+
+  for (let i = 0; i <= days; i++) {
+    const date = new Date();
+    let last = new Date(date.getTime() - days * 24 * 60 * 60 * 1000);
+
+    last.setDate(last.getDate() + i);
+    aryDates.push(
+      last.getDate() + "-" + (last.getMonth() + 1) + "-" + last.getFullYear()
+    );
+  }
+  return aryDates;
+
+}

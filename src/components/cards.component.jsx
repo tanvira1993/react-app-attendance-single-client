@@ -5,7 +5,8 @@ import cx from "classnames";
 
 import styles from "./Cards.module.css";
 
-const Cards = () => {
+const Cards = (props) => {
+  const absent = props.users - props.present
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -18,21 +19,20 @@ const Cards = () => {
         >
           <CardContent>
             <Typography color="textPrimary" gutterBottom>
-              Total Students
+              Total Users
             </Typography>
             <Typography variant="h5" component="h2">
               <CountUp
                 start={0}
-                // end={confirmed.value}
+                end={props.users}
                 duration={2.75}
                 separator=","
               />
             </Typography>
             <Typography color="textPrimary">
-              {/* {new Date(lastUpdate).toDateString()} */}
             </Typography>
             <Typography variant="body2" component="p">
-              Number of students.
+              Number of users.
             </Typography>
           </CardContent>
         </Grid>
@@ -45,12 +45,12 @@ const Cards = () => {
         >
           <CardContent>
             <Typography color="textPrimary" gutterBottom>
-              Present
+              Present Users
             </Typography>
             <Typography variant="h5" component="h2">
               <CountUp
                 start={0}
-                // end={recovered.value}
+                end={props.present}
                 duration={2.75}
                 separator=","
               />
@@ -59,7 +59,7 @@ const Cards = () => {
               {/* {new Date(lastUpdate).toDateString()} */}
             </Typography>
             <Typography variant="body2" component="p">
-              Number of presents students.
+              Number of presents users.
             </Typography>
           </CardContent>
         </Grid>
@@ -77,7 +77,7 @@ const Cards = () => {
             <Typography variant="h5" component="h2">
               <CountUp
                 start={0}
-                // end={deaths.value}
+                end={absent}
                 duration={2.75}
                 separator=","
               />
