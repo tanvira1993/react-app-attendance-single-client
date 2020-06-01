@@ -48,14 +48,13 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color: "white",
-    fontFamily : 'Segoe UI Symbol',
+    fontFamily: "Segoe UI Symbol",
   },
   drawerTitle: {
-    fontSize:21,
-    fontFamily : '-apple-system',
-    margin : 'auto',
-    fontWeight:600,
-
+    fontSize: 21,
+    fontFamily: "-apple-system",
+    margin: "auto",
+    fontWeight: 600,
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -405,7 +404,7 @@ export default function PersistentDrawerLeft() {
                 <ListItem
                   button
                   component={Link}
-                  to="/dailyattendance"
+                  to="/rfidUser"
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
