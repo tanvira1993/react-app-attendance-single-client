@@ -21,12 +21,7 @@ export default class CreateOrg extends Component {
     return (
       <React.Fragment>
         {" "}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div>
           <Textbox
             attributesInput={{
               id: "Organization",

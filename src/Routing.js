@@ -9,6 +9,8 @@ import SelectedAttendance from "./pages/selectedAttendance";
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
 import organization from "./pages/organization";
 import CreateOrg from "./pages/createOrg";
+import branch from "./pages/branch";
+import CreateBranch from "./pages/createBarnch";
 import DateRange from "./pages/dateRange";
 import UserReport from "./pages/userReport";
 import RfidUser from "./pages/rfidUser";
@@ -30,6 +32,8 @@ const AppRoute = () => {
         <Route path="/organization" component={organization}></Route>
         <Route path="/rfidUser" component={RfidUser}></Route>
         <Route path="/createorg" component={CreateOrg}></Route>
+        <Route path="/branch" component={branch}></Route>
+        <Route path="/createBranch" component={CreateBranch}></Route>
         <Route path="/createRfidUser" component={RfidUserAdd}></Route>
         <Route path="/dateRangeReport" component={DateRange}></Route>
         <Route path="/userReport" component={UserReport}></Route>
