@@ -20,10 +20,7 @@ export default class EventCalendar extends Component {
           date: BackDatePipe(data.created_at),
         },
         {
-          title: `Out-Time: ${TimePipe(
-            DatePipe(data.created_at),
-            data.inTime
-          )}`,
+          title: `Out-Time:  ${TimePipe(DatePipe(data.created_at), data.outTime)}`,
           date: BackDatePipe(data.created_at),
         },
         {

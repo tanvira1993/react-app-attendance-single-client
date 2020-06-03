@@ -25,7 +25,7 @@ export const BackDatePipe = (date) => {
 };
 
 export const TimePipe = (date, time) => {
-  if (date == null && time == null) {
+  if (date == null || time == null) {
     return null;
   } else {
     let start = new Date(`${date} ${time}`).toLocaleTimeString();
