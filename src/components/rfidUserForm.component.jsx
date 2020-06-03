@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { PageHeader } from "antd";
-import { Form, Input, InputNumber,Select, Button } from "antd";
+import { Form, Input, InputNumber, Select, Button } from "antd";
 import "antd/dist/antd.css";
-import {rfidUserCreate} from "../api/dashboardApi"
+import { rfidUserCreate } from "../api/dashboardApi";
 import { ToastSpace } from "../util/global";
 const { Option } = Select;
 const layout = {
@@ -25,7 +25,7 @@ class RfidUserAdd extends Component {
   state = {};
   onFinish = (values) => {
     console.log(values);
-    rfidUserCreate(values)
+    rfidUserCreate(values);
   };
   render() {
     return (
@@ -42,7 +42,6 @@ class RfidUserAdd extends Component {
             name="name"
             label="Name"
             rules={[{ required: true, whitespace: true }]}
-            
           >
             <Input />
           </Form.Item>
@@ -50,7 +49,6 @@ class RfidUserAdd extends Component {
             name="rfid_no"
             label="RFID"
             rules={[{ required: true, whitespace: true }]}
-            
           >
             <Input />
           </Form.Item>
@@ -58,17 +56,14 @@ class RfidUserAdd extends Component {
             name="roll"
             label="E-ID"
             rules={[{ required: true, whitespace: true }]}
-            
           >
-
-<Input />
+            <Input />
           </Form.Item>
 
-<Form.Item
+          <Form.Item
             name="mobile"
             label="Mobile"
             rules={[{ required: true, whitespace: true }]}
-            
           >
             <Input />
           </Form.Item>
@@ -77,7 +72,6 @@ class RfidUserAdd extends Component {
             name="desc"
             label="Description"
             rules={[{ required: true, whitespace: true }]}
-            
           >
             <Input />
           </Form.Item>
@@ -86,7 +80,6 @@ class RfidUserAdd extends Component {
             name="fingerprint"
             label="Fingerprint"
             rules={[{ required: false, whitespace: true }]}
-            
           >
             <Input />
           </Form.Item>
@@ -95,24 +88,25 @@ class RfidUserAdd extends Component {
             name="status"
             label="STATUS"
             hasFeedback
-            rules={[{ required: true, message: "Please select active status!" }]}
+            rules={[
+              { required: true, message: "Please select active status!" },
+            ]}
           >
             <Select placeholder="Please select status">
               <Option value={1}>Active</Option>
               <Option value={0}>In Active</Option>
             </Select>
           </Form.Item>
-          
-          
+
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 5 }}>
-          <Button
+            <Button
               // onClick={this.handleSubmit}
               type="primary"
               htmlType="submit"
             >
               Submit
             </Button>
-            </Form.Item>
+          </Form.Item>
         </Form>
       </React.Fragment>
     );

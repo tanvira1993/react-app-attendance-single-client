@@ -1,7 +1,22 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
+import { getallUsers } from "../api/dashboardApi";
 
-class Data extends React.Component {
+class RfidUserList extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      result: [],
+    };
+  }
+
+  async componentDidMount() {
+    const getdata = await getallUsers();
+    console.log("RFID USER :", getdata);
+    this.setState({ result: getdata });
+  }
+
   render() {
     const columns = [
       {
@@ -21,7 +36,7 @@ class Data extends React.Component {
         label: "Company",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
       },
       {
@@ -79,4 +94,4 @@ class Data extends React.Component {
   }
 }
 
-export default Data;
+export default RfidUserList;

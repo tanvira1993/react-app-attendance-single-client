@@ -1,5 +1,5 @@
 import React from "react";
-import Data from "./dataTable";
+import RfidUserList from "../components/rfidUserList.component";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -24,7 +24,7 @@ function RfidUser(props) {
         </Button>
       </div>
 
-      <Data></Data>
+      <RfidUserList></RfidUserList>
     </div>
   );
 }
