@@ -97,7 +97,7 @@ class RfidUserAdd extends Component {
             hasFeedback
             rules={[{ required: true, message: "Please select active status!" }]}
           >
-            <Select placeholder="Please select a country">
+            <Select placeholder="Please select status">
               <Option value={1}>Active</Option>
               <Option value={0}>In Active</Option>
             </Select>
