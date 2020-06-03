@@ -8,29 +8,32 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import {getpresent, getallUsers,getChartValue} from "../api/dashboardApi"
-import {DateArray} from "../util/global"
+import { getpresent, getallUsers, getChartValue } from "../api/dashboardApi";
+import { DateArray } from "../util/global";
 class Homepage extends React.Component {
-
-  constructor(props){
-    super(props)
-    this.state={
-      users : 0,
-      present : 0,
-      date : null,
-      parseDate:null
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: 0,
+      present: 0,
+      date: null,
+      parseDate: null,
+    };
   }
-  async componentDidMount(){
-    const users = await getallUsers()
-    const present = await getpresent()
-    const date = await getChartValue()
-    let values = Object.values(date)
-    const parseDate = DateArray(5)
-    this.setState ({users: users,present:present, date:values,parseDate : parseDate})
+  async componentDidMount() {
+    const users = await getallUsers();
+    const present = await getpresent();
+    const date = await getChartValue();
+    let values = Object.values(date);
+    const parseDate = DateArray(5);
+    this.setState({
+      users: users,
+      present: present,
+      date: values,
+      parseDate: parseDate,
+    });
   }
   render() {
-
     const state2 = {
       labels: this.state.parseDate,
       datasets: [
@@ -42,28 +45,35 @@ class Homepage extends React.Component {
           borderColor: "rgba(0,0,0,1)",
           borderWidth: 2,
           data: this.state.date,
-    
         },
       ],
     };
-     const state = {
+    const state = {
       labels: this.state.parseDate,
       datasets: [
         {
           label: "persons",
-          backgroundColor: ["#B21F00", "#C9DE00", "#2FDE00", "#00A6B4", "#6800B4"],
+          backgroundColor: [
+            "#B21F00",
+            "#C9DE00",
+            "#2FDE00",
+            "#00A6B4",
+            "#6800B4",
+            "#f37121",
+          ],
           hoverBackgroundColor: [
             "#501800",
             "#4B5000",
             "#175000",
             "#003350",
             "#35014F",
+            "#f37121",
           ],
           data: this.state.date,
         },
       ],
     };
-    
+
     return (
       <React.Fragment>
         <div
@@ -72,7 +82,7 @@ class Homepage extends React.Component {
           <MyClock />
         </div>
 
-        <Cards users={this.state.users} present={this.state.present}/>
+        <Cards users={this.state.users} present={this.state.present} />
 
         <div className="mt-4" style={{ width: "100%" }}>
           <Box display="flex" justifyContent="flex-start">
