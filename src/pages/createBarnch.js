@@ -1,11 +1,29 @@
 import React, { Component } from "react";
 
-import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
 import { getOrg } from "../api/configuration";
 import { createBranch } from "../api/configuration";
-import { Textbox, Select } from "react-inputs-validation";
+
 import "react-inputs-validation/lib/react-inputs-validation.min.css";
+import { PageHeader } from "antd";
+import { Form, Input, Select, Button } from "antd";
+import "antd/dist/antd.css";
+
+const { Option } = Select;
+const layout = {
+  labelCol: { span: 5 },
+  wrapperCol: { span: 12 },
+};
+
+const validateMessages = {
+  required: "${label} is required!",
+  types: {
+    email: "${label} is not validate email!",
+    number: "${label} is not a validate number!",
+  },
+  number: {
+    range: "${label} must be between ${min} and ${max}",
+  },
+};
 export default class CreateBranch extends Component {
   constructor() {
     super();
@@ -22,112 +40,81 @@ export default class CreateBranch extends Component {
     this.setState({ data: getdata });
     console.log("data========", getdata);
   }
-  handleSubmit = () => {
-    const data = {
-      name: this.state.name,
-      org_id: this.state.org_id,
-      desc: this.state.desc,
+  // handleSubmit = () => {
+  //   const data = {
+  //     name: this.state.name,
+  //     org_id: this.state.org_id,
+  //     desc: this.state.desc,
+  //   };
+  //   console.log(data);
+  //   createBranch(data);
+  // };
+
+  onFinish = (values) => {
+    // console.log("opp", values.organization);
+    this.setState = {
+      name: values.name,
+      org_id: values.org_id,
+      desc: values.desc,
     };
-    console.log(data);
-    createBranch(data);
+    console.log("ert", values);
+    createBranch({
+      name: values.organization,
+      org_id: values.org_id,
+      desc: values.desc,
+    });
   };
 
   render() {
     const { name, org_id, desc } = this.state;
     return (
       <React.Fragment>
-        <div>
-          {" "}
-          <Textbox
-            attributesInput={{
-              id: "Name",
-              name: "Name",
-              type: "text",
-              placeholder: "Place your name here",
-            }}
-            value={name}
-            onChange={(name, e) => {
-              this.setState({ name });
-              console.log(e);
-            }}
-            onBlur={(e) => {
-              console.log(e);
-            }}
-            validationOption={{
-              name: "Name",
-              check: true,
-              required: true,
-            }}
-          />
-        </div>
-        <div className="mt-2">
-          {" "}
-          <Textbox
-            attributesInput={{
-              id: "Desc",
-              name: "Desc",
-              type: "text",
-              placeholder: "Place your description here",
-            }}
-            value={desc}
-            onChange={(desc, e) => {
-              this.setState({ desc });
-              console.log(e);
-            }}
-            onBlur={(e) => {
-              console.log(e);
-            }}
-            validationOption={{
-              name: "Desc",
-              check: true,
-              required: true,
-            }}
-          />
-        </div>
-
-        <div className="mt-2">
-          {" "}
-          <Select
-            attributesInput={{
-              // Optional.
-              id: this.state.data.id,
-              name: this.state.data.name,
-            }}
-            value={this.state.data.name} // Optional.[String].Default: "".
-            optionList={this.state.data} // Required.[Array of Object(s)].Default: [].
-            onChange={(res, e) => {
-              this.setState({ org_id: res.id });
-              console.log(res.id);
-            }} // Optional.[Func].Default: () => {}. Will return the value.
-            onBlur={() => {}} // Optional.[Func].Default: none. In order to validate the value on blur, you MUST provide a function, even if it is an empty function. Missing this, the validation on blur will not work.
-            customStyleOptionListContainer={{
-              maxHeight: "200px",
-              overflow: "auto",
-              fontSize: "14px",
-            }} // Optional.[Object].Default: {}.
-            validationOption={{
-              name: "org_id", // Optional.[String].Default: "". To display in the Error message. i.e Please select a ${name}.
-              check: true, // Optional.[Bool].Default: true. To determin if you need to validate.
-              required: true, // Optional.[Bool].Default: true. To determin if it is a required field.
-            }}
-          />
-        </div>
-
-        <div
-          style={{ display: "flex", justifyContent: "center" }}
-          className="mt-2"
+        <PageHeader title="Create Branch" />
+        <Form
+          {...layout}
+          name="nest-messages"
+          onFinish={this.onFinish}
+          validateMessages={validateMessages}
         >
-          <Button
-            onClick={this.handleSubmit}
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="small"
-            startIcon={<SaveIcon />}
+          <Form.Item
+            name="select"
+            label="Select"
+            hasFeedback
+            rules={[{ required: true, message: "Please select your country!" }]}
           >
-            Submit
-          </Button>
-        </div>
+            <Select placeholder="Please select a country">
+              <Option value="china">China</Option>
+              <Option value="usa">U.S.A</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name="name"
+            label="Name"
+            rules={[{ required: true, whitespace: true }]}
+            value={name}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="desc"
+            label="Descrepition"
+            rules={[{ required: true, whitespace: true }]}
+            value={desc}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 5 }}>
+            <Button
+              // onClick={this.handleSubmit}
+              type="primary"
+              htmlType="submit"
+            >
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
       </React.Fragment>
     );
   }

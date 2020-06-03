@@ -180,7 +180,7 @@ export default function PersistentDrawerLeft() {
           <ListItem
             button
             component={Link}
-            to="/monthattendance"
+            to="/location"
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // import Button from "@material-ui/core/Button";
 
-import { createOrg } from "../api/configuration";
+import { createLocation } from "../api/configuration";
 
 import "react-inputs-validation/lib/react-inputs-validation.min.css";
 
@@ -24,20 +24,20 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
-export default class CreateOrg extends Component {
+export default class CreateLocation extends Component {
   state = {
-    organization: "",
+    location: "",
   };
 
   onFinish = (values) => {
-    console.log("opp", values.organization);
-    this.setState = { organization: values.organization };
+    console.log("opp", values.location);
+    this.setState = { location: values.location };
     console.log("ert", values);
-    createOrg({ name: values.organization });
+    createLocation({ name: values.location });
   };
 
   render() {
-    const { organization } = this.state;
+    const { location } = this.state;
     return (
       <React.Fragment>
         <PageHeader title="Create Organization" />
@@ -48,10 +48,10 @@ export default class CreateOrg extends Component {
           validateMessages={validateMessages}
         >
           <Form.Item
-            name="organization"
-            label="Organization"
+            name="location"
+            label="Location"
             rules={[{ required: true, whitespace: true }]}
-            value={organization}
+            value={location}
           >
             <Input />
           </Form.Item>
