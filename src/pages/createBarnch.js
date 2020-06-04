@@ -59,7 +59,7 @@ export default class CreateBranch extends Component {
     };
     console.log("ert", values);
     createBranch({
-      name: values.organization,
+      name: values.name,
       org_id: values.org_id,
       desc: values.desc,
     });
@@ -77,14 +77,17 @@ export default class CreateBranch extends Component {
           validateMessages={validateMessages}
         >
           <Form.Item
-            name="select"
-            label="Select"
+            name="org_id"
+            label="org_id"
             hasFeedback
-            rules={[{ required: true, message: "Please select your country!" }]}
+            rules={[
+              { required: true, message: "Please select your Organization!" },
+            ]}
           >
-            <Select placeholder="Please select a country">
-              <Option value="china">China</Option>
-              <Option value="usa">U.S.A</Option>
+            <Select placeholder="Please select a Organization">
+              {this.state.data.map((index) => (
+                <Option value={index.id}>{index.org_name}</Option>
+              ))}
             </Select>
           </Form.Item>
           <Form.Item
