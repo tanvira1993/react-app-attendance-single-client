@@ -26,7 +26,7 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
-export default class CreateLocation extends Component {
+export default class CreateDevice extends Component {
   constructor() {
     super();
     this.state = {
@@ -38,7 +38,7 @@ export default class CreateLocation extends Component {
     };
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const getdata = await getOrg();
     this.setState({ data: getdata });
     console.log("data========", getdata);
@@ -66,20 +66,11 @@ export default class CreateLocation extends Component {
     });
   };
 
-  onChange = (value) => {
-    this.setState({ branch_data: [] });
-    console.log(`selected ${value}`);
-    getBranch(value).then((re) => {
-      this.setState({ branch_data: re.data });
-      console.log("tyt", re);
-    });
-  };
-
   render() {
     const { location } = this.state;
     return (
       <React.Fragment>
-        <PageHeader title="Create Location" />
+        <PageHeader title="Create Device" />
         <Form
           {...layout}
           name="nest-messages"
@@ -96,8 +87,7 @@ export default class CreateLocation extends Component {
             ]}
           >
             <Select
-              onChange={this.onChange}
-              // onChange={() => this.branchData()}
+              onChange={() => this.branchData()}
               placeholder="Please select a Organization"
             >
               {this.state.data.map((index) => (
@@ -105,7 +95,7 @@ export default class CreateLocation extends Component {
               ))}
             </Select>
           </Form.Item>
-          <Form.Item
+          {/* <Form.Item
             name="branch_id"
             label="Branch"
             hasFeedback
@@ -116,7 +106,7 @@ export default class CreateLocation extends Component {
                 <Option value={index.id}>{index.branch_name}</Option>
               ))}
             </Select>
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item
             name="location"
             label="Location"

@@ -13,6 +13,8 @@ import branch from "./pages/branch";
 import CreateBranch from "./pages/createBarnch";
 import location from "./pages/location";
 import CreateLoction from "./pages/createLocation";
+import device from "./pages/device";
+import CreateDevice from "./pages/createDevice";
 import DateRange from "./pages/dateRange";
 import UserReport from "./pages/userReport";
 import RfidUser from "./pages/rfidUser";
@@ -38,6 +40,8 @@ const AppRoute = () => {
         <Route path="/createBranch" component={CreateBranch}></Route>
         <Route path="/location" component={location}></Route>
         <Route path="/createLocation" component={CreateLoction}></Route>
+        <Route path="/device" component={device}></Route>
+        <Route path="/createDevice" component={CreateDevice}></Route>
         <Route path="/createRfidUser" component={RfidUserAdd}></Route>
         <Route path="/dateRangeReport" component={DateRange}></Route>
         <Route path="/userReport" component={UserReport}></Route>
