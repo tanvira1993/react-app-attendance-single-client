@@ -12,6 +12,11 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ReportIcon from "@material-ui/icons/Report";
+import SettingsIcon from "@material-ui/icons/Settings";
+import PhonelinkSetupIcon from "@material-ui/icons/PhonelinkSetup";
+import TodayIcon from "@material-ui/icons/Today";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -19,7 +24,9 @@ import Button from "@material-ui/core/Button";
 import IconExpandLess from "@material-ui/icons/ExpandLess";
 import IconExpandMore from "@material-ui/icons/ExpandMore";
 import IconDashboard from "@material-ui/icons/Dashboard";
-
+import MemoryIcon from "@material-ui/icons/Memory";
+import TimerIcon from "@material-ui/icons/Timer";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import IconBarChart from "@material-ui/icons/BarChart";
 import IconLibraryBooks from "@material-ui/icons/LibraryBooks";
 import Collapse from "@material-ui/core/Collapse";
@@ -33,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   appMenu: {
     width: "100%",
   },
+
   navList: {
     width: drawerWidth,
   },
@@ -52,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerTitle: {
     fontSize: 21,
-    fontFamily: "-apple-system",
+    fontFamily: "cursive",
+    color: "#021F57",
     margin: "auto",
     fontWeight: 600,
   },
@@ -82,6 +91,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundImage:
+      "linear-gradient(to bottom, #e2edec, #c3e2e7, #a8d6e9, #97c6ed, #96b4ed)",
   },
   drawerHeader: {
     display: "flex",
@@ -143,7 +154,7 @@ export default function PersistentDrawerLeft() {
         className={classes.menuItem}
       >
         <ListItemIcon className={classes.menuItemIcon}>
-          <IconLibraryBooks />
+          <PhonelinkSetupIcon />
         </ListItemIcon>
         <ListItemText primary="Configurations" />
         {open3 ? <IconExpandLess /> : <IconExpandMore />}
@@ -228,7 +239,7 @@ export default function PersistentDrawerLeft() {
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open,
           })}
-          style={{ background: "#2E3B55" }}
+          style={{ background: "#0A2B69" }}
         >
           <Toolbar>
             <IconButton
@@ -288,7 +299,7 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary="Dashboard" />
             </ListItem>
 
-            <ListItem
+            {/* <ListItem
               button
               component={Link}
               to="/manualAttendance"
@@ -301,11 +312,11 @@ export default function PersistentDrawerLeft() {
                 className="font-weight-light"
                 primary="Manual Attendance"
               />
-            </ListItem>
+            </ListItem> */}
 
             <ListItem button onClick={handleClick} className={classes.menuItem}>
               <ListItemIcon className={classes.menuItemIcon}>
-                <IconLibraryBooks />
+                <ReportIcon />
               </ListItemIcon>
               <ListItemText primary="Reports" />
               {open1 ? <IconExpandLess /> : <IconExpandMore />}
@@ -313,7 +324,7 @@ export default function PersistentDrawerLeft() {
             <Collapse in={open1} timeout="auto" unmountOnExit>
               <Divider />
               <List component="div" disablePadding>
-                <ListItem
+                {/* <ListItem
                   button
                   component={Link}
                   to="/dailyattendance"
@@ -355,7 +366,7 @@ export default function PersistentDrawerLeft() {
                     className="font-weight-light"
                     primary="Monthly Report"
                   />
-                </ListItem>
+                </ListItem> */}
                 <ListItem
                   button
                   component={Link}
@@ -363,7 +374,7 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                    <IconBarChart />
+                    <TodayIcon />
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
@@ -377,7 +388,7 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                    <IconBarChart />
+                    <AssignmentIndIcon />
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
@@ -393,7 +404,7 @@ export default function PersistentDrawerLeft() {
               className={classes.menuItem}
             >
               <ListItemIcon className={classes.menuItemIcon}>
-                <IconLibraryBooks />
+                <SettingsIcon />
               </ListItemIcon>
               <ListItemText primary="Seetings" />
               {open2 ? <IconExpandLess /> : <IconExpandMore />}
@@ -408,7 +419,7 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                    <IconBarChart />
+                    <MemoryIcon />
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
@@ -423,7 +434,7 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                    <IconBarChart />
+                    <TimerIcon />
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
@@ -437,7 +448,7 @@ export default function PersistentDrawerLeft() {
                   className={classes.menuItem}
                 >
                   <ListItemIcon className={classes.menuItemIcon}>
-                    <IconBarChart />
+                    <SupervisorAccountIcon />
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
