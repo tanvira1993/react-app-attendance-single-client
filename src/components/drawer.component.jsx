@@ -46,9 +46,10 @@ const useStyles = makeStyles((theme) => ({
   },
   menuItem: {
     width: drawerWidth,
+    color: "#E2EDEC",
   },
   menuItemIcon: {
-    color: "#607D8B",
+    color: "#E2EDEC",
   },
   root: {
     display: "flex",
@@ -60,10 +61,10 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerTitle: {
     fontSize: 21,
-    fontFamily: "cursive",
-    color: "#021F57",
+    fontFamily: "sans-serif",
+    color: "#E2EDEC",
     margin: "auto",
-    fontWeight: 600,
+    fontWeight: "bold",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -91,8 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundImage:
-      "linear-gradient(to bottom, #e2edec, #c3e2e7, #a8d6e9, #97c6ed, #96b4ed)",
+    background: "#92B1F4",
   },
   drawerHeader: {
     display: "flex",
@@ -276,7 +276,10 @@ export default function PersistentDrawerLeft() {
         >
           <div className={classes.drawerHeader}>
             <div className={classes.drawerTitle}>Control Panel</div>
-            <IconButton onClick={handleDrawerClose}>
+            <IconButton
+              style={{ color: "#E2EDEC" }}
+              onClick={handleDrawerClose}
+            >
               {theme.direction === "ltr" ? (
                 <ChevronLeftIcon />
               ) : (
@@ -406,7 +409,7 @@ export default function PersistentDrawerLeft() {
               <ListItemIcon className={classes.menuItemIcon}>
                 <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary="Seetings" />
+              <ListItemText primary="Settings" />
               {open2 ? <IconExpandLess /> : <IconExpandMore />}
             </ListItem>
             <Collapse in={open2} timeout="auto" unmountOnExit>
