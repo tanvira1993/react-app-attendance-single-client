@@ -28,7 +28,7 @@ export const TimePipe = (date, time) => {
   if (date == null || time == null) {
     return null;
   } else {
-    let start = new Date(`${date} ${time}`).toLocaleTimeString();
+    let start = new Date(`${date} ${time}`).toLocaleTimeString("en-US",{timeZone: "Asia/Dhaka"});
     return start;
   }
 };

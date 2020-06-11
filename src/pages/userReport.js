@@ -45,6 +45,7 @@ function Homepage(props) {
   }));
   const [rfidusers, setrfidusers] = useState([]);
   const [render, setrender] = useState(false);
+  const [name,setName] = useState("")
   const [report, setreport] = useState(null);
   const [dateInfo, setdateInfo] = useState(null);
   const [user, setUser] = useState(null);
@@ -125,7 +126,7 @@ function Homepage(props) {
           >
             <Typography className={classes.heading}>Filter</Typography>
             <Typography className={classes.secondaryHeading}>
-              I am an expansion panel
+              {name}
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -140,6 +141,7 @@ function Homepage(props) {
                           return null;
                         } else {
                           setUser(newValue.id);
+                          setName(newValue.rfid_user_name);
                         }
                       }}
                       id="combo-box-demo"
