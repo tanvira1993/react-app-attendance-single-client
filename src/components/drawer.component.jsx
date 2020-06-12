@@ -432,7 +432,7 @@ export default function PersistentDrawerLeft() {
                   </ListItemIcon>
                   <ListItemText
                     className="font-weight-light"
-                    primary="RFID-Users"
+                    primary="Users"
                   />
                 </ListItem>
 
@@ -450,7 +450,7 @@ export default function PersistentDrawerLeft() {
                     primary="Time-Limit"
                   />
                 </ListItem>
-                <ListItem
+                {/* <ListItem
                   button
                   component={Link}
                   to="/monthattendance"
@@ -463,7 +463,7 @@ export default function PersistentDrawerLeft() {
                     className="font-weight-light"
                     primary="Admin-users"
                   />
-                </ListItem>
+                </ListItem> */}
               </List>
             </Collapse>
 
