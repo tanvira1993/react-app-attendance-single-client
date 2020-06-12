@@ -47,7 +47,13 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     width: drawerWidth,
     color: "#E2EDEC",
+    "&:hover": {
+      background: "#051937",
+      border: "1px",
+      borderRadius: "15px",
+    },
   },
+
   menuItemIcon: {
     color: "#E2EDEC",
   },
@@ -92,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#92B1F4",
+    background: "#7969FA",
   },
   drawerHeader: {
     display: "flex",
