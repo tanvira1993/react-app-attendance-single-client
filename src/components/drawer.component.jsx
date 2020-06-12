@@ -16,6 +16,11 @@ import ReportIcon from "@material-ui/icons/Report";
 import SettingsIcon from "@material-ui/icons/Settings";
 import PhonelinkSetupIcon from "@material-ui/icons/PhonelinkSetup";
 import TodayIcon from "@material-ui/icons/Today";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import ShareIcon from "@material-ui/icons/Share";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import MapIcon from "@material-ui/icons/Map";
+import ContactsIcon from "@material-ui/icons/Contacts";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -175,7 +180,7 @@ export default function PersistentDrawerLeft() {
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>
-              <IconBarChart />
+              <AccountBalanceIcon />
             </ListItemIcon>
             <ListItemText
               className="font-weight-light"
@@ -190,7 +195,7 @@ export default function PersistentDrawerLeft() {
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>
-              <IconBarChart />
+              <ShareIcon />
             </ListItemIcon>
             <ListItemText className="font-weight-light" primary="Branch" />
           </ListItem>
@@ -201,7 +206,7 @@ export default function PersistentDrawerLeft() {
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>
-              <IconBarChart />
+              <LocationOnIcon />
             </ListItemIcon>
             <ListItemText
               className="font-weight-light"
@@ -216,7 +221,7 @@ export default function PersistentDrawerLeft() {
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>
-              <IconBarChart />
+              <MapIcon />
             </ListItemIcon>
             <ListItemText className="font-weight-light" primary="Device Map" />
           </ListItem>
@@ -227,7 +232,7 @@ export default function PersistentDrawerLeft() {
             className={classes.menuItem}
           >
             <ListItemIcon className={classes.menuItemIcon}>
-              <IconBarChart />
+              <ContactsIcon />
             </ListItemIcon>
             <ListItemText className="font-weight-light" primary="User Type" />
           </ListItem>
@@ -430,10 +435,7 @@ export default function PersistentDrawerLeft() {
                   <ListItemIcon className={classes.menuItemIcon}>
                     <MemoryIcon />
                   </ListItemIcon>
-                  <ListItemText
-                    className="font-weight-light"
-                    primary="Users"
-                  />
+                  <ListItemText className="font-weight-light" primary="Users" />
                 </ListItem>
 
                 <ListItem
