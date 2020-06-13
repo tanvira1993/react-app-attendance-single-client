@@ -13,12 +13,63 @@ class ManualAttendencePost extends Component {
 
     this.state = {
       result: [],
+      selectAll: false,
+      checked: [],
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSingleCheckboxChange = this.handleSingleCheckboxChange.bind(
+      this
+    );
   }
+
+  handleChange = () => {
+    console.log("handle change");
+    var selectAll = !this.state.selectAll;
+    this.setState({ selectAll: selectAll });
+    var checkedCopy = [];
+    this.state.result.forEach(function(e, index) {
+      checkedCopy.push(selectAll);
+    });
+    // this.setState({
+    //   checked: checkedCopy,
+    // });
+    this.setState({ checked: checkedCopy }, function() {
+      console.log("Handle change: " + this.state.checked);
+    });
+    // console.log(this.state);
+  };
+
+  handleSingleCheckboxChange = (index) => {
+    console.log(index);
+
+    var checkedCopy = this.state.checked;
+    checkedCopy[index] = !this.state.checked[index];
+    if (checkedCopy[index] === false) {
+      this.setState({ selectAll: false });
+    }
+
+    this.setState({
+      checked: checkedCopy,
+    });
+  };
 
   async componentDidMount() {
     const getdata = await getManualAttendance();
-    this.setState({ result: getdata });
+
+    var checkedCopy = [];
+    var selectAll = this.state.selectAll;
+
+    getdata.forEach(function(e, index) {
+      checkedCopy.push(selectAll);
+    });
+
+    this.setState({
+      result: getdata,
+      checked: checkedCopy,
+      selectAll: selectAll,
+    });
+    console.log("Component did Mount --", this.state);
   }
   handlePost = () => {
     console.log("daataaa", this.props.data);
@@ -46,6 +97,14 @@ class ManualAttendencePost extends Component {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>
+                <Checkbox
+                  color="primary"
+                  size="small"
+                  onChange={this.handleChange}
+                  checked={this.state.selectAll}
+                />
+              </th>
               <th>E-ID</th>
               <th>Name</th>
               <th>RFID NO</th>
@@ -57,8 +116,17 @@ class ManualAttendencePost extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.data.map((data1) => (
+            {this.state.result.map((data1, index) => (
               <tr key={data1.user__id}>
+                <td>
+                  <Checkbox
+                    color="primary"
+                    size="small"
+                    defaultChecked={this.state.checked[index]}
+                    checked={this.state.checked[index]}
+                    onChange={() => this.handleSingleCheckboxChange(index)}
+                  />
+                </td>
                 <td>{data1.user__id}</td>
                 <td>{data1.rfid_user_name}</td>
                 <td>{data1.rfid_no}</td>

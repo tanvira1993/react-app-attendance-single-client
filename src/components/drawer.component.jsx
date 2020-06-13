@@ -313,7 +313,7 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary="Dashboard" />
             </ListItem>
 
-            {/* <ListItem
+            <ListItem
               button
               component={Link}
               to="/manualAttendance"
@@ -326,7 +326,7 @@ export default function PersistentDrawerLeft() {
                 className="font-weight-light"
                 primary="Manual Attendance"
               />
-            </ListItem> */}
+            </ListItem>
 
             <ListItem button onClick={handleClick} className={classes.menuItem}>
               <ListItemIcon className={classes.menuItemIcon}>
