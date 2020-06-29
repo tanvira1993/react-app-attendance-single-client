@@ -2,7 +2,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 // export const Base_url = "http://103.129.239.20:5000/"; // dev server
-export const Base_url = "http://18.188.207.2:5000/"; // stage server
+export const Base_url = "http://139.162.14.41:5000/"; // stage server
 
 export const DatePipe = (date) => {
   if (date == null) {
