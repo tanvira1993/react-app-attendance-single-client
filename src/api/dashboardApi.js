@@ -54,16 +54,35 @@ export const registerFinger = async(value) =>{
     name : name,
     id : value.id
   }
-  console.log("=================================",data)
-  return data;
-  // const url = Base_url + `createRUser`;
-  const url = `139.162.14.41:9000/getId`
-  // try {
-  //   const response = await axios.post(url, data, headerConfig());
-  //   console.log("rerer", response);
-  //   toastDesign("Success!!");
-  //   return response;
-  // } catch (error) {
-  //   return null;
-  // }
+  let savedata = {
+    name : name,
+    id : value.id,
+    user_name : 'test',
+    device_location_id : localStorage.getItem('device_location_id')
+  }
+  console.log("data",savedata,data)
+  // return data;
+  console.log("data",savedata,data)
+  const Chkurl = Base_url + `checkFinger`;
+  const save = Base_url + `createFinger`;
+  const url = "http://139.162.14.41:5000/getId"
+  try{
+    const chk = await  axios.post(Chkurl, data)
+  if(chk){
+    const broker = await  axios.post(url, data)
+    const dbset = await  axios.post(save, savedata)
+    toastDesign("Success!!");
+    return true
+
+  }
+  else{
+    toastDesign("This ID already registered!");
+    return false
+  }
+  }
+  catch (error) {
+    toastDesign("Something is wrong!");
+    return null;
+  }
+  
 }

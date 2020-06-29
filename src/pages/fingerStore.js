@@ -31,7 +31,7 @@ class RfidUserAdd extends Component {
     return (
       <React.Fragment>
         <ToastSpace />
-        <PageHeader title="Create Users" />
+        <PageHeader title="Register Finger" />
         <Form
           {...layout}
           name="nest-messages"
@@ -42,9 +42,10 @@ class RfidUserAdd extends Component {
           <Form.Item
             name="id"
             label="ID"
-            rules={[{ required: true, whitespace: true }]}
+            rules={[{ required: true }]}
           >
-            <Input />
+            {/* <Input /> */}
+            <InputNumber />
           </Form.Item>
          
 
