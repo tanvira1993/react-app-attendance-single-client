@@ -441,6 +441,18 @@ export default function PersistentDrawerLeft() {
                 <ListItem
                   button
                   component={Link}
+                  to="/fingerStore"
+                  className={classes.menuItem}
+                >
+                  <ListItemIcon className={classes.menuItemIcon}>
+                    <MemoryIcon />
+                  </ListItemIcon>
+                  <ListItemText className="font-weight-light" primary="Register Finger" />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Link}
                   to="/weekattendance"
                   className={classes.menuItem}
                 >

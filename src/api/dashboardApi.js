@@ -2,6 +2,7 @@ import axios from "axios";
 import { Base_url } from "../util/global";
 import { headerConfig } from "../util/config";
 import { toastDesign } from "../util/global";
+import { da } from "date-fns/locale";
 
 export const getallUsers = async () => {
   const url = Base_url + `getallRfidUsersByDeviceLocation`;
@@ -46,3 +47,23 @@ export const rfidUserCreate = async (data) => {
     return null;
   }
 };
+
+export const registerFinger = async(value) =>{
+  let name = localStorage.getItem('device_name')
+  let data = {
+    name : name,
+    id : value.id
+  }
+  console.log("=================================",data)
+  return data;
+  // const url = Base_url + `createRUser`;
+  const url = `139.162.14.41:9000/getId`
+  // try {
+  //   const response = await axios.post(url, data, headerConfig());
+  //   console.log("rerer", response);
+  //   toastDesign("Success!!");
+  //   return response;
+  // } catch (error) {
+  //   return null;
+  // }
+}

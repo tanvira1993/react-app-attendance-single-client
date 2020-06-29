@@ -18,6 +18,7 @@ import CreateDevice from "./pages/createDevice";
 import DateRange from "./pages/dateRange";
 import UserReport from "./pages/userReport";
 import RfidUser from "./pages/rfidUser";
+import FingerStore from "./pages/fingerStore";
 import RfidUserAdd from "./components/rfidUserForm.component";
 const AppRoute = () => {
   return (
@@ -45,6 +46,9 @@ const AppRoute = () => {
         <Route path="/createRfidUser" component={RfidUserAdd}></Route>
         <Route path="/dateRangeReport" component={DateRange}></Route>
         <Route path="/userReport" component={UserReport}></Route>
+        <Route path="/fingerStore" component={FingerStore}></Route>
+
+        
       </Switch>
     </div>
   );

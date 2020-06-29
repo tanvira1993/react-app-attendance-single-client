@@ -47,7 +47,7 @@ class RfidUserAdd extends Component {
           </Form.Item>
           <Form.Item
             name="rfid_no"
-            label="RFID"
+            label="RFID/FingerPrint"
             rules={[{ required: true, whitespace: true }]}
           >
             <Input />
@@ -76,13 +76,13 @@ class RfidUserAdd extends Component {
             <Input />
           </Form.Item>
 
-          <Form.Item
+          {/* <Form.Item
             name="fingerprint"
             label="Fingerprint"
             rules={[{ required: false, whitespace: true }]}
           >
             <Input />
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
             name="status"
