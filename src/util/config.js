@@ -3,19 +3,23 @@ import axios from "axios";
 
 export const login = async (data) => {
   const url = Base_url + `login`;
+  // console.log("holudia pakhi")
+  // const response = await axios.post(url, data);
+  // console.log(response);
   try {
     const response = await axios.post(url, data);
-    console.log(response.data[0].token);
-    if (response.data[0].token !== undefined) {
-      localStorage.setItem("token", response.data[0].token);
-      localStorage.setItem("organization_id", response.data[0].organization_id);
-      localStorage.setItem("branch_id", response.data[0].branch_id);
+    console.log(response.data.auth[0].token,response);
+    if (response.data.auth[0].token !== undefined) {
+      localStorage.setItem("token", response.data.auth[0].token);
+      localStorage.setItem("organization_id", response.data.auth[0].organization_id);
+      localStorage.setItem("branch_id", response.data.auth[0].branch_id);
       localStorage.setItem(
         "device_location_id",
-        response.data[0].device_location_id
-      );
-      localStorage.setItem("role", response.data[0].user_role);
-      localStorage.setItem("userId", response.data[0].id);
+        response.data.auth[0].device_location_id
+        );
+      localStorage.setItem("role", response.data.auth[0].user_role);
+      localStorage.setItem("userId", response.data.auth[0].id);
+      localStorage.setItem("device_name", response.data.device_name[0].device_name);
       return true;
     }
     return false;
@@ -73,7 +77,7 @@ export const parsingServerDate = (mainData) => {
     if (existing.length) {
       var existingIndex = output.indexOf(existing[0]);
       output[existingIndex].created_at = output[
-        existingIndex
+      existingIndex
       ].created_at.concat(item.created_at);
     } else {
       if (typeof item.created_at == "string")
